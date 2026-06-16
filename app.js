@@ -7,6 +7,9 @@ import path from "node:path";
 // Importing express to run server
 import express from 'express';
 
+// Using dotenv for environment variables
+import 'dotenv/config';
+
 // For using __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,10 +26,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 
 // Listening server on specified server
-const port = 3000;
+const port = process.env.NODE_PORT;
 app.listen(port, (error) => {
     if (error){
         throw error;
     }
-    console.log("Server running at port 3000");
+    console.log(`Server running at port ${port}`);
 })
