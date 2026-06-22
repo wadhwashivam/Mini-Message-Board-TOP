@@ -1,3 +1,7 @@
+// Using dotenv for environment variables
+import 'dotenv/config';
+
+
 // Importing Routes
 import indexRouter from "./Routes/indexRouter.js";
 // Required for __dirname setup in ES Modules
@@ -6,9 +10,6 @@ import { dirname } from "node:path";
 import path from "node:path";
 // Importing express to run server
 import express from 'express';
-
-// Using dotenv for environment variables
-import 'dotenv/config';
 
 // For using __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);

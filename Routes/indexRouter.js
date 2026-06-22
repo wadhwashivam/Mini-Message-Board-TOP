@@ -1,37 +1,11 @@
 import { Router } from "express";
 const indexRouter = Router();
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];
+import * as messageController from "../controllers/messageController.js";
 
-indexRouter.get("/", (req,res) => {
-    res.render("index", {title: "Mini Messageboard", messages: messages});
-});
+indexRouter.get("/", messageController.getMessages);
+indexRouter.get("/new", messageController.getMessageForm);
+indexRouter.post("/new", messageController.createMessage);
 
-indexRouter.get("/new", (req,res)=> {
-    res.render("form");
-});
-
-indexRouter.post("/new", (req,res)=> {
-    const { messageUser, messageText } = req.body;
-
-    messages.push({
-        text:messageText,
-        user: messageUser,
-        added: new Date(),
-    });
-    
-    res.redirect("/");
-});
 
 export default indexRouter;
